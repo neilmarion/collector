@@ -20,6 +20,7 @@ class CollectorWorker
     photo = Album.find(album_id).photos.new
     photo.photo = open(hash["source"])
     photo.fb_id = hash["id"]
+    photo.text = hash["name"]
     photo.created_at = hash["created_time"].to_time
     photo.save!
   end
