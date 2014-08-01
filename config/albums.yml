@@ -1,0 +1,9 @@
+default: &default
+  albums:
+    - { "name": "DidYouKnowBlog", "album_id": "257558077593647" }
+development:
+  <<: *default
+test:
+  <<: *default
+production:
+  <<: *default
