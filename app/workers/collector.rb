@@ -4,7 +4,7 @@ class Collector
 
   def perform(url, access_token_string)
     photos_json = JSON.parse(open(URI.encode(url)).read)
-    self.perform_async("#{photos_json["paging"]["next"]}&#{access_token_string}")
+    self.perform_async("#{photos_json["paging"]["next"]}&#{access_token_string}", access_token_string)
     self.create_photos(photos_json)
   end
 
