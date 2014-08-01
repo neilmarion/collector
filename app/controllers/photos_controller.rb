@@ -1,5 +1,9 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.page(params[:page])
+    unless params["album_id"]
+      @photos = Photo.page(params[:page])
+    else
+      @photos = Album.find(params[:album_id]).photos.page(params[:page])
+    end
   end
 end

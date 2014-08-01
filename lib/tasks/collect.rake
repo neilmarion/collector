@@ -13,7 +13,7 @@ def get_photos(fb_id, album_id)
   access_token_io = open(url)
   puts "Generating access token..."
   access_token = access_token_io.gets
-  url = "https://graph.facebook.com/v2.0/257558077593647/photos?#{access_token}"
+  url = "https://graph.facebook.com/v2.0/#{fb_id}/photos?#{access_token}"
 
   CollectorWorker.perform_async(url, access_token, album_id)
 end

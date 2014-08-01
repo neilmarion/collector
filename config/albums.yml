@@ -1,6 +1,7 @@
 default: &default
   albums:
     - { "name": "DidYouKnowBlog", "fb_id": "257558077593647" }
+    - { "name": "1000 Life Hacks", "fb_id": "641939212483911" }
 development:
   <<: *default
 test:
