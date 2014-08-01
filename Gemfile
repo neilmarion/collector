@@ -15,3 +15,4 @@ gem 'sidekiq'
 gem 'pry', group: [:development, :test]
 gem 'koala'
 gem 'sinatra'
+gem 'kaminari'
