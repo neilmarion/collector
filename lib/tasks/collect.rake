@@ -11,7 +11,6 @@ def get_first_page_photos
   puts "Generating access token..."
   a = access_token_io.gets
   url = "https://graph.facebook.com/v2.0/257558077593647/photos?#{a}"
-  puts "Grabbing the first page of the album..."
-  first_page_posts = JSON.parse(open(URI.encode(url)).read)
-  puts first_page_posts
+
+  Collector.perform_async(url, a)
 end
