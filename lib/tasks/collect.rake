@@ -12,5 +12,5 @@ def get_first_page_photos
   a = access_token_io.gets
   url = "https://graph.facebook.com/v2.0/257558077593647/photos?#{a}"
 
-  Collector.perform_async(url, a)
+  CollectorWorker.perform_async(url, a)
 end
