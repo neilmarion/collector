@@ -1,4 +1,4 @@
-class UpdaterWorker
+class UpdaterTriggerWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
   sidekiq_options queue: "high", retry: false, :backtrace => true
