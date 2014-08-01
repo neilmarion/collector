@@ -13,3 +13,4 @@ gem 'pg'
 gem 'carrierwave'
 gem 'sidekiq'
 gem 'pry', group: [:development, :test]
+gem 'koala'

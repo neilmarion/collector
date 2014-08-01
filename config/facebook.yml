@@ -1,0 +1,7 @@
+development:
+  key: 781201671901165
+  secret: d8ad5d44879bc9006bad517c76e736ab
+
+test:
+  key: 781201671901165
+  secret: d8ad5d44879bc9006bad517c76e736ab
