@@ -1,9 +1,7 @@
 namespace :collect do
-  task :photos => :environment do
-    ALBUMS.each do |album|
-      a = Album.create({name: album["name"], fb_id: album["fb_id"]})
-      get_photos(album["fb_id"], a.id)
-    end
+  task :photos, [:name, :fb_id] => :environment do |t, args|
+    a = Album.create({name: args[:name], fb_id: args[:fb_id]})
+    get_photos(args[:fb_id], a.id)
   end
 end
 
