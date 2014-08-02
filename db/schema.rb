@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140801074613) do
   end
 
   create_table "photos", force: true do |t|
-    t.string   "text"
+    t.text     "text"
     t.string   "photo"
     t.string   "fb_id"
     t.integer  "album_id"
