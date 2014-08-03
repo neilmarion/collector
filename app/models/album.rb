@@ -8,4 +8,8 @@ class Album < ActiveRecord::Base
   def last
     photos.order('created_at DESC').last
   end
+
+  def random
+    photos.find(rand(self.photos.count) + 1)
+  end
 end
