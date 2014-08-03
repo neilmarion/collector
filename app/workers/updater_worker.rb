@@ -20,6 +20,7 @@ class UpdaterWorker
     photo.photo = open(hash["source"])
     photo.fb_id = hash["id"]
     photo.text = hash["name"]
+    photo.new = true;
     photo.created_at = hash["created_time"]
     photo.save!
   end
