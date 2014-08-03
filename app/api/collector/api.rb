@@ -21,5 +21,11 @@ module Collector
       end
     end
 
+    resource :new_ids do
+      get do
+        Album.find(params[:album_id]).new_ids
+      end
+    end
+
   end
 end
