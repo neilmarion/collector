@@ -27,5 +27,10 @@ module Collector
       end
     end
 
+    resource :month do
+      get do
+        Time.now.month
+      end
+    end
   end
 end
