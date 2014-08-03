@@ -9,16 +9,10 @@ module Collector
       get do
         if params[:album_id]
           album = Album.find(params[:album_id])
-          album.first
+          album.photos.first.prev_current_next
         else
-          direction = params[:direction]
           id  = params[:id]
-          photo = if params[:direction] == "next"
-            Photo.find(id).next || Photo.find(id).album.first
-          else
-            Photo.find(id).prev || Photo.find(id).album.last
-          end
-          photo
+          Photo.find(id).prev_current_next || Photo.find(id).album.first.prev_current_next
         end
       end
     end
