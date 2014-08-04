@@ -12,7 +12,7 @@ module Collector
           if params[:random]
             album.random.prev_current_next
           else
-            album.photos.first.prev_current_next
+            album.photos.order('created_at DESC').first.prev_current_next
           end
         else
           id  = params[:id]
@@ -29,7 +29,7 @@ module Collector
 
     resource :month do
       get do
-        Time.now.month
+        1
       end
     end
   end
