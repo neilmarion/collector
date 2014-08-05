@@ -29,7 +29,7 @@ module Collector
 
     resource :month do
       get do
-        1
+        Time.now.month
       end
     end
   end
