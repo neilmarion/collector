@@ -10,7 +10,7 @@ class Album < ActiveRecord::Base
   end
 
   def random
-    photos.find(rand(photos.count) + 1)
+    photos.order("RANDOM()").first
   end
 
   def new
