@@ -21,5 +21,6 @@ RSpec.describe PhotoRandomizer do
     device.has_read(photo_2.id)
     randomizer = PhotoRandomizer.new(album.id, device.mac_address)
     randomizer.photo.should_not eq nil
+    Device.find(device.id).read.should eq nil
   end
 end

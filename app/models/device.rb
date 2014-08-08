@@ -10,4 +10,9 @@ class Device < ActiveRecord::Base
 
     save!
   end
+
+  def reset_read
+    self.read = nil
+    save!
+  end
 end

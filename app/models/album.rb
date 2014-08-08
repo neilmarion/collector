@@ -18,7 +18,13 @@ class Album < ActiveRecord::Base
     if device.read.nil?
       random
     else
-      photos.where("id NOT IN (#{device.read})").order("RANDOM()").first || random
+      photo = photos.where("id NOT IN (#{device.read})").order("RANDOM()").first
+      unless photo.nil?
+        photo
+      else
+        device.update_attributes!(read: nil)
+        random
+      end
     end
   end
 
