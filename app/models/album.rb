@@ -14,6 +14,10 @@ class Album < ActiveRecord::Base
     photos.order("RANDOM()").first
   end
 
+  def random_by_device(device)
+    photos.where("id NOT IN (#{device.read.join(',')})").order("RANDOM()").first
+  end
+
   def new
     photos.where(new: true).order('created_at DESC').first
   end

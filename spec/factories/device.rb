@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :device do
-
+    mac_address "AB:CD:EF:GF:IJ"
   end
 end
