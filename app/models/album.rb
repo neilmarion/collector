@@ -15,7 +15,7 @@ class Album < ActiveRecord::Base
   end
 
   def random_by_device(device)
-    photos.where("id NOT IN (#{device.read.join(',')})").order("RANDOM()").first
+    photos.where("id NOT IN (#{device.read.join(',')})").order("RANDOM()").first || random
   end
 
   def new
