@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140808023738) do
   create_table "devices", force: true do |t|
     t.string   "mac_address"
     t.integer  "album_id"
-    t.hstore   "data"
+    t.hstore   "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

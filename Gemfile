@@ -21,4 +21,5 @@ gem 'capistrano', '2.15.5'
 gem 'therubyracer'
 gem 'grape'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'rspec-rails'
+gem 'rspec-rails', :group => [:test]
+gem 'factory_girl_rails', :group => [:test]
