@@ -1,5 +1,6 @@
 class Album < ActiveRecord::Base
   has_many :photos
+  has_many :devices
 
   def first
     photos.order('created_at DESC').first

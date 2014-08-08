@@ -10,14 +10,16 @@ module Collector
         if params[:album_id]
           album = Album.find(params[:album_id])
           if params[:random]
-            album.random.prev_current_next
+            prev_current_next = album.random.prev_current_next
           else
-            album.photos.order('created_at DESC').first.prev_current_next
+            prev_current_next = album.photos.order('created_at DESC').first.prev_current_next
           end
         else
           id  = params[:id]
-          Photo.find(id).prev_current_next || Photo.find(id).album.first.prev_current_next
+          prev_current_next = Photo.find(id).prev_current_next || Photo.find(id).album.first.prev_current_next
         end
+        album.devices.where(mac_address: params[:device]).first_or_create.has_read(prev_current_next[:current][:id]) if params[:device]
+        prev_current_next
       end
     end
 
