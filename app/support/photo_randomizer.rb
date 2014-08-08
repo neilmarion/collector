@@ -7,7 +7,7 @@ class PhotoRandomizer
   end
 
   def photo
-    if device_mac_address
+    if device_mac_address && !device_mac_address.blank?
       Album.find(album_id).random_by_device(Device.where(mac_address: device_mac_address).first)
     else
       Album.find(album_id).random

@@ -19,7 +19,7 @@ module Collector
           id  = params[:id]
           prev_current_next = Photo.find(id).prev_current_next || Photo.find(id).album.first.prev_current_next
         end
-        album.devices.where(mac_address: params[:device]).first_or_create.has_read(prev_current_next[:current][:id]) if params[:device]
+        album.devices.where(mac_address: params[:device]).first_or_create.has_read(prev_current_next[:current][:id]) if params[:device] && !params[:device].blank?
         prev_current_next
       end
     end
