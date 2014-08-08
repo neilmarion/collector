@@ -11,15 +11,15 @@ RSpec.describe PhotoRandomizer do
   end
 
   it "randomizes photo that hasn't been read by the user" do
-    device.read << photo.id
-    randomizer = PhotoRandomizer.new(album, device)
+    device.has_read(photo.id)
+    randomizer = PhotoRandomizer.new(album.id, device.mac_address)
     randomizer.photo.id.should_not eq photo.id
   end
 
   it "randomizes anyway and clears device's 'read' data if all are read" do
-    device.read << photo.id
-    device.read << photo_2.id
-    randomizer = PhotoRandomizer.new(album, device)
+    device.has_read(photo.id)
+    device.has_read(photo_2.id)
+    randomizer = PhotoRandomizer.new(album.id, device.mac_address)
     randomizer.photo.should_not eq nil
   end
 end

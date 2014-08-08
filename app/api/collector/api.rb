@@ -10,7 +10,8 @@ module Collector
         if params[:album_id]
           album = Album.find(params[:album_id])
           if params[:random]
-            prev_current_next = album.random.prev_current_next
+            pr = PhotoRandomizer.new(params[:album_id], params[:device])
+            prev_current_next = pr.photo.prev_current_next
           else
             prev_current_next = album.photos.order('created_at DESC').first.prev_current_next
           end

@@ -20,4 +20,15 @@ RSpec.describe Collector::API do
     get "/v1/show?album_id=#{album.id}"
     Device.count.should == 0
   end
+
+  it "randomizes photo even if no device" do
+    get "/v1/show?album_id=#{album.id}&random=true"
+    JSON.parse(response.body)
+  end
+
+  it "randomizes photo if there's a device" do
+    device = FactoryGirl.create(:device)
+    get "/v1/show?album_id=#{album.id}&random=true&device=#{device.mac_address}"
+    JSON.parse(response.body)
+  end
 end

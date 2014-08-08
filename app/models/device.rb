@@ -3,12 +3,12 @@ class Device < ActiveRecord::Base
   after_save :initialize_data
 
   def has_read(id)
-    self.read << id
+    self.read["read"] << id
   end
 
   private
 
   def initialize_data
-    self.read = []
+    self.read = {:read => []}
   end
 end
