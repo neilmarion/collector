@@ -3,7 +3,7 @@ class CreateDevices < ActiveRecord::Migration
     create_table :devices do |t|
       t.string :mac_address
       t.integer :album_id
-      t.hstore :read
+      t.text :read
 
       t.timestamps
     end

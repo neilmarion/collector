@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140808023738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "albums", force: true do |t|
     t.string   "fb_id"
@@ -27,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140808023738) do
   create_table "devices", force: true do |t|
     t.string   "mac_address"
     t.integer  "album_id"
-    t.hstore   "read"
+    t.text     "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
