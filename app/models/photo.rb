@@ -17,7 +17,7 @@ class Photo < ActiveRecord::Base
 
     {
       :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url },
-      :current => { :id => self.id, :photo => self.photo_url },
+      :current => { :id => self.id, :photo => self.photo_url, :text => self.text },
       :next => { :id => next_photo.id, :photo => next_photo.photo_url }
     }
   end
