@@ -17,7 +17,7 @@ class Photo < ActiveRecord::Base
 
     {
       :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url },
-      :current => { :id => self.id, :photo => self.photo_url, :text => self.text },
+      :current => { :id => self.id, :photo => self.photo_url, :text => self.text, :created_at => self.created_at.to_date.strftime('%a %d %b %Y') },
       :next => { :id => next_photo.id, :photo => next_photo.photo_url }
     }
   end
