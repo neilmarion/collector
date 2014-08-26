@@ -38,5 +38,11 @@ module Collector
         Time.now.month
       end
     end
+
+    resource :announcements do
+      get do
+        Album.find(params[:album_id]).announcements.first.message
+      end
+    end
   end
 end
