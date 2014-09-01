@@ -16,9 +16,9 @@ class Photo < ActiveRecord::Base
     next_photo = self.next
 
     {
-      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url },
-      :current => { :id => self.id, :photo => self.photo_url, :text => self.text, :created_at => self.created_at.to_date.strftime('%a %d %b %Y') },
-      :next => { :id => next_photo.id, :photo => next_photo.photo_url }
+      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url, :small_photo => prev_photo.photo.small.url },
+      :current => { :id => self.id, :photo => self.photo_url, :text => self.text, :created_at => self.created_at.to_date.strftime('%a %d %b %Y'), :small_photo => self.photo.small.url },
+      :next => { :id => next_photo.id, :photo => next_photo.photo_url, :small_photo => next_photo.photo.small.url }
     }
   end
 
@@ -28,9 +28,9 @@ class Photo < ActiveRecord::Base
     next_photo = photo.next
 
     {
-      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url },
-      :current => { :id => photo.id, :photo => photo.photo_url },
-      :next => { :id => next_photo.id, :photo => next_photo.photo_url }
+      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url, :small_photo => prev_photo.photo.small.url },
+      :current => { :id => photo.id, :photo => photo.photo_url, :small_photo => photo.photo.small.url },
+      :next => { :id => next_photo.id, :photo => next_photo.photo_url, :small_photo =>next_photo.photo.small.url }
     }
   end
 
@@ -40,9 +40,9 @@ class Photo < ActiveRecord::Base
     prev_photo = photo.prev
 
     {
-      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url },
-      :current => { :id => photo.id, :photo => photo.photo_url },
-      :next => { :id => next_photo.id, :photo => next_photo.photo_url }
+      :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url, :small_url => prev_photo.photo.small.url },
+      :current => { :id => photo.id, :photo => photo.photo_url, :small_url => photo.photo.small.url },
+      :next => { :id => next_photo.id, :photo => next_photo.photo_url, :small_url => next_photo.photo.small.url }
     }
   end
 end
