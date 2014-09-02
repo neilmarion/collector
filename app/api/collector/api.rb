@@ -14,8 +14,8 @@ module Collector
             photo = pr.photo
             prev_current_next = photo.prev_current_next(pr)
           else
-            pr = PhotoRandomizer.new(photo.album_id, params[:device])
             photo = album.photos.order('created_at DESC').first
+            pr = PhotoRandomizer.new(photo.album_id, params[:device])
             prev_current_next = photo.prev_current_next(pr)
           end
         else
