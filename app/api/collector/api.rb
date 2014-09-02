@@ -12,15 +12,17 @@ module Collector
           if params[:random]
             pr = PhotoRandomizer.new(params[:album_id], params[:device])
             photo = pr.photo
-            prev_current_next = photo.prev_current_next
+            prev_current_next = photo.prev_current_next(pr)
           else
+            pr = PhotoRandomizer.new(photo.album_id, params[:device])
             photo = album.photos.order('created_at DESC').first
-            prev_current_next = photo.prev_current_next
+            prev_current_next = photo.prev_current_next(pr)
           end
         else
           id  = params[:id]
           photo = Photo.find(id) || Photo.find(id).album.first
-          prev_current_next = photo.prev_current_next
+          pr = PhotoRandomizer.new(photo.album_id, params[:device])
+          prev_current_next = photo.prev_current_next(pr)
         end
         photo.album.devices.where(mac_address: params[:device]).first_or_create.has_read(prev_current_next[:current][:id]) if params[:device] && !params[:device].blank?
         prev_current_next

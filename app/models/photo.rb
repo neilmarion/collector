@@ -11,14 +11,16 @@ class Photo < ActiveRecord::Base
     album.photos.where("created_at > ?", created_at).order("created_at DESC").last || album.last
   end
 
-  def prev_current_next
+  def prev_current_next(pr)
     prev_photo = self.prev
     next_photo = self.next
+    random_photo = pr.photo
 
     {
       :previous => { :id => prev_photo.id, :photo => prev_photo.photo_url, :small_photo => prev_photo.photo.small.url },
       :current => { :id => self.id, :photo => self.photo_url, :text => self.text, :created_at => self.created_at.to_date.strftime('%a %d %b %Y'), :small_photo => self.photo.small.url },
-      :next => { :id => next_photo.id, :photo => next_photo.photo_url, :small_photo => next_photo.photo.small.url }
+      :next => { :id => next_photo.id, :photo => next_photo.photo_url, :small_photo => next_photo.photo.small.url },
+      :random => { :id => random_photo.id, :photo => random_photo.photo_url, :small_photo => random_photo.photo.small.url }
     }
   end
 
