@@ -4,6 +4,8 @@ class PhotoRandomizer
   def initialize(album_id, device_mac_address)
     @album_id = album_id
     @device_mac_address = device_mac_address
+
+    Album.find(album_id).devices.where(mac_address: device_mac_address).first_or_create
   end
 
   def photo
