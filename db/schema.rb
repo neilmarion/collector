@@ -38,14 +38,7 @@ ActiveRecord::Schema.define(version: 20140903032414) do
   create_table "advertisements", force: true do |t|
     t.text     "text"
     t.string   "photo"
-    t.integer  "album_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "advertisments", force: true do |t|
-    t.text     "text"
-    t.string   "photo"
+    t.string   "link"
     t.integer  "album_id"
     t.datetime "created_at"
     t.datetime "updated_at"

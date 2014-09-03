@@ -17,6 +17,6 @@ class Admin::AdvertisementsController < ApplicationController
   private
 
   def product_params
-     params.require(:advertisement).permit(:text, :photo, :album_id)
+     params.require(:advertisement).permit(:text, :photo, :album_id, :link)
   end
 end
