@@ -46,5 +46,13 @@ module Collector
         Album.find(params[:album_id]).announcements.first.message
       end
     end
+
+    resource :getadvertisement do
+      get do
+        ar = AdvertisementRandomizer.new(params[:album_id])
+        advertisement = ar.advertisement
+        { :photo => advertisement.photo_url, :link => advertisement.link }
+      end
+    end
   end
 end
