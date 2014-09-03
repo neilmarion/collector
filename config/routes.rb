@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :albums
+    resources :albums do
+      resources :advertisements
+    end
   end
 
 
