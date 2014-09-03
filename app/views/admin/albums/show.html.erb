@@ -1,2 +1,17 @@
-<h1>Admin::Albums#show</h1>
-<p>Find me in app/views/admin/albums/show.html.erb</p>
+<%= link_to "Create advertisement", new_admin_album_advertisement_path(@album) %>
+
+<br>
+
+<% @advertisements.each do |advertisement| %>
+  <div>
+    <p>
+      <%= advertisement.text %>
+    </p>
+    <p>
+      <%= image_tag advertisement.photo_url %>
+    </p>
+    <p>
+      <%= image_tag advertisement.photo.small.url %>
+    </p>
+  </div>
+<% end %>

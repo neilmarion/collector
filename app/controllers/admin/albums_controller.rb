@@ -6,5 +6,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def show
+    @album = Album.find(params[:id])
+    @advertisements = @album.advertisements
   end
 end
