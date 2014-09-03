@@ -25,3 +25,4 @@ gem 'rspec-rails', :group => [:test]
 gem 'factory_girl_rails', :group => [:test]
 gem 'database_cleaner', :group => [:test]
 gem 'rmagick'
+gem 'devise'
