@@ -54,5 +54,19 @@ module Collector
         { :photo => advertisement.photo_url, :link => advertisement.link }
       end
     end
+
+    resource :enablepushnotifications do
+      post do
+        album = Album.find(params[:album_id])
+        device = album.devices.where(mac_address: params[:device], reg_id: params[:reg_id], platform: params[:platform]).first_or_create
+        if params[:enable]
+          device.enable_push_notifications
+          { :message => "Push notifications enabled"}
+        else
+          device.disable_push_notifications
+          { :message => "Push notifications disabled"}
+        end
+      end
+    end
   end
 end

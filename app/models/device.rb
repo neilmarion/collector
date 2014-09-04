@@ -11,6 +11,14 @@ class Device < ActiveRecord::Base
     save!
   end
 
+  def enable_push_notifications
+    update_attributes(push_notif_enabled: true)
+  end
+
+  def disable_push_notifications
+    update_attributes(push_notif_enabled: false)
+  end
+
   def reset_read
     self.read = nil
     save!
