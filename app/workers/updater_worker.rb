@@ -10,10 +10,20 @@ class UpdaterWorker
   private
 
   def update_photos(hash, album_id)
+    send_notification = false
     hash["data"].each do |photo|
       unless Photo.exists?(:fb_id => photo["id"])
         create_photo(photo, album_id)
+        send_notification = true
       end
+    end
+
+    album = Album.find(album_id)
+    if send_notification && album.android_gcm_api_key
+      gcm = GCM.new(album.android_gcm_api_key)
+      options = {'data' => {'title' => album.name, 'message' => 'New stories just came in!'}}
+      reg_ids = album.devices.where.not('reg_id' => nil).map{ |x| x.reg_id }
+      gcm.send(reg_ids, options)
     end
   end
 
