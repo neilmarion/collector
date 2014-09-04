@@ -11,7 +11,9 @@ class UpdaterWorker
 
   def update_photos(hash, album_id)
     hash["data"].each do |photo|
-      create_photo(photo, album_id) unless Photo.exists?(:fb_id => photo["id"])
+      unless Photo.exists?(:fb_id => photo["id"])
+        create_photo(photo, album_id)
+      end
     end
   end
 
