@@ -58,8 +58,9 @@ module Collector
     resource :enablepushnotifications do
       post do
         album = Album.find(params[:album_id])
-        device = album.devices.where(mac_address: params[:device], reg_id: params[:reg_id], platform: params[:platform]).first_or_create
-        if params[:enable]
+        device = album.devices.where(mac_address: params[:device]).first_or_create
+        device.update_attributes(reg_id: params[:reg_id], platform: params[:platform])
+        if params[:enable] == "true"
           device.enable_push_notifications
           { :message => "Push notifications enabled"}
         else
