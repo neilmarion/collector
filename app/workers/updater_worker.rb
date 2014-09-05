@@ -22,7 +22,7 @@ class UpdaterWorker
     if send_notification && album.android_gcm_api_key
       gcm = GCM.new(album.android_gcm_api_key)
       options = {'data' => {'title' => album.name, 'message' => album.message}}
-      reg_ids = album.devices.where.not('reg_id' => nil).where(push_notif_enabled: true).map{ |x| x.reg_id }.map{ |x| x.reg_id }
+      reg_ids = album.devices.where.not('reg_id' => nil).where(push_notif_enabled: true).map{ |x| x.reg_id }
       gcm.send(reg_ids, options)
     end
   end
