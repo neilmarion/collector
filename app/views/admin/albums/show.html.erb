@@ -18,3 +18,14 @@
     </p>
   </div>
 <% end %>
+
+<h1>Photos</h1>
+
+<%= paginate @photos %>
+
+<% @photos.each do |photo| %>
+  <%= image_tag(photo.photo_url) %>
+  <%= check_box_tag 'show', photo.id, photo.show, class: 'show-photo' %>
+<% end %>
+
+<%= paginate @photos %>

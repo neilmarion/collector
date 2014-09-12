@@ -28,12 +28,14 @@ class UpdaterWorker
   end
 
   def create_photo(hash, album_id)
-    photo = Album.find(album_id).photos.new
+    album = Album.find(album_id)
+    photo = album.photos.new
     photo.photo = open(hash["source"])
     photo.fb_id = hash["id"]
     photo.text = hash["name"]
     photo.new = true;
     photo.created_at = hash["created_time"]
+    photo.show = false unless album.show_photos_default
     photo.save!
   end
 end
