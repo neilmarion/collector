@@ -1,6 +1,12 @@
 ready = ->
   $(".show-photo").change ->
-    console.log "hello"
+    $.ajax
+      type: "POST"
+      url: "/admin/photos/" + this.value + "/update_show"
+      dataType: "json"
+      success: (data) ->
+
+      error: ->
     return
 
 
