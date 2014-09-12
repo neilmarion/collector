@@ -4,11 +4,11 @@ class Photo < ActiveRecord::Base
   belongs_to :album
 
   def next
-    album.photos.where("created_at < ?", created_at).order("created_at DESC").first || album.first
+    album.photos.where(show: true).where("created_at < ?", created_at).order("created_at DESC").first || album.first
   end
 
   def prev
-    album.photos.where("created_at > ?", created_at).order("created_at DESC").last || album.last
+    album.photos.where(show: true).where("created_at > ?", created_at).order("created_at DESC").last || album.last
   end
 
   def prev_current_next(pr)

@@ -5,22 +5,22 @@ class Album < ActiveRecord::Base
   has_many :advertisements
 
   def first
-    photos.order('created_at DESC').first
+    photos.where(show: true).order('created_at DESC').first
   end
 
   def last
-    photos.order('created_at DESC').last
+    photos.where(show: true).order('created_at DESC').last
   end
 
   def random
-    photos.order("RANDOM()").first
+    photos.where(show: true).order("RANDOM()").first
   end
 
   def random_by_device(device)
     if device.read.nil?
       random
     else
-      photo = photos.where("id NOT IN (#{device.read})").order("RANDOM()").first
+      photo = photos.where(show: true).where("id NOT IN (#{device.read})").order("RANDOM()").first
       unless photo.nil?
         photo
       else
@@ -31,10 +31,10 @@ class Album < ActiveRecord::Base
   end
 
   def new
-    photos.where(new: true).order('created_at DESC').first
+    photos.where(show: true).where(new: true).order('created_at DESC').first
   end
 
   def new_ids
-    photos.where(new: true).order('created_at DESC').all.map(&:id)
+    photos.where(show: true).where(new: true).order('created_at DESC').all.map(&:id)
   end
 end
