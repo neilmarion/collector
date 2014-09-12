@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904210655) do
+ActiveRecord::Schema.define(version: 20140912161543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140904210655) do
     t.datetime "updated_at"
     t.string   "android_gcm_api_key"
     t.string   "message"
+    t.boolean  "show_photos_default", default: true
   end
 
   create_table "announcements", force: true do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140904210655) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "new"
+    t.boolean  "show",       default: true
   end
 
 end
