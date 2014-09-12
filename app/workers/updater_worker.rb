@@ -19,7 +19,7 @@ class UpdaterWorker
     end
 
     album = Album.find(album_id)
-    if send_notification && album.android_gcm_api_key
+    if send_notification && album.android_gcm_api_key && album.show_photos_default
       gcm = GCM.new(album.android_gcm_api_key)
       options = {'data' => {'title' => album.name, 'message' => album.message}, 'collapse_key' => 'updated_state'}
       reg_ids = album.devices.where.not('reg_id' => nil).where(push_notif_enabled: true).map{ |x| x.reg_id }
