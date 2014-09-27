@@ -10,7 +10,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@bitbucket.org:nmfdelacruz/#{repo}.git"
+set :repository, "git@github.com:neilmarion/#{repo}.git"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
