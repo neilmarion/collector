@@ -24,7 +24,7 @@
 <%= paginate @photos %>
 
 <% @photos.each do |photo| %>
-  <%= image_tag(photo.photo_url) %>
+  <%= image_tag(photo.photo.small.url) %>
   <%= check_box_tag 'show', photo.id, photo.show, class: 'show-photo' %>
 <% end %>
 
